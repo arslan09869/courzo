@@ -1,0 +1,1 @@
+ALTER TABLE "courseLayout" ADD COLUMN "thumbnail" text;
