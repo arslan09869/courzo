@@ -23,7 +23,7 @@ export default function CourseStats({ course }) {
                     </div>
                     <div>
                         <div className="text-sm text-muted-foreground">Skill Level</div>
-                        <div className="font-bold">{course.difficulty}</div>
+                        <div className="font-bold">{course?.difficulty}</div>
                     </div>
                 </div>
 
@@ -45,7 +45,7 @@ export default function CourseStats({ course }) {
                     </div>
                     <div>
                         <div className="text-sm text-muted-foreground">Duration</div>
-                        <div className="font-bold">{course.duration}</div>
+                        <div className="font-bold">{course?.duration}</div>
                     </div>
                 </div>
 
@@ -67,7 +67,7 @@ export default function CourseStats({ course }) {
                     </div>
                     <div>
                         <div className="text-sm text-muted-foreground">No Of Chapters</div>
-                        <div className="font-bold">{course.noOfChapters}</div>
+                        <div className="font-bold">{course?.noOfChapters}</div>
                     </div>
                 </div>
 
@@ -89,7 +89,7 @@ export default function CourseStats({ course }) {
                     </div>
                     <div>
                         <div className="text-sm text-muted-foreground">Video Included?</div>
-                        <div className="font-bold">{course.hasVideo}</div>
+                        <div className="font-bold">{course?.hasVideo}</div>
                     </div>
                 </div>
             </div>

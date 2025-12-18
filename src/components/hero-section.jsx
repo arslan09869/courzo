@@ -6,10 +6,10 @@ const HeroSection = () => {
   return (
     <div className={`max-w-6xl mx-auto w-full sm:py-14 md:py-16 py-8 px-2 text-gray-200 text-center`}>
       <h1 className={`text-xl sm:text-3xl md:text-4xl lg:text-5xl tracking-tight drop-shadow-md`}>
-        Turn Ideas into Impact — Instantly Create Smart AI Courses with Coursora ⚡️
+        Turn Ideas into Impact — Instantly Create Smart AI Courses with Courzo ⚡️
       </h1>
       <p className="mt-4 text-base sm:text-lg md:text-xl text-purple-200 max-w-2xl mx-auto">
-        Coursora transforms your inputs into complete, personalized learning programs using AI.
+        Courzo transforms your inputs into complete, personalized learning programs using AI.
       </p>
       <div className="mt-6 flex justify-center gap-4">
         <Link href='/create-course'>

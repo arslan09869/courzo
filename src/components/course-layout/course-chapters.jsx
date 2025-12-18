@@ -26,7 +26,7 @@ export default function CourseChapters({ course, generateButton }) {
         try {
             setLoading(true);
 
-            for (const chapter of course.chapters) {
+            for (const chapter of course?.chapters) {
                 //             const PROMPT = `
                 // You are a JSON generator bot.
 
@@ -46,7 +46,7 @@ export default function CourseChapters({ course, generateButton }) {
                 const PROMPT = `
     You are an AI course generator.
     I will give you:
-    - COURSENAME: ${course.topic}
+    - COURSENAME: ${course?.topic}
     - CHAPTERTOPIC: ${chapter.topic}
 
     Return a JSON object with exactly two fields:
@@ -99,25 +99,25 @@ export default function CourseChapters({ course, generateButton }) {
                 //     console.log(parsedObject);
                 // }
 
-                const youtubeVideoId = await generateVideo(`${course.topic}:${chapter.topic}`);
+                const youtubeVideoId = await generateVideo(`${course?.topic}:${chapter.topic}`);
 
                 const dbResponse = await createChapterList({
-                    iid: course.id,
+                    iid: course?.id,
                     videoId: youtubeVideoId,
                     chapterContent: parsed, // parsedObject
                     userId: user.id,
-                    category: course.category,
+                    category: course?.category,
                     duration: chapter.duration,
-                    topic: course.topic
+                    topic: course?.topic
                 });
 
-                await updateCourseLayout(course.id, {
+                await updateCourseLayout(course?.id, {
                     courseId: dbResponse.courseId,
                     userId: user.id
                 });
             }
 
-            router.push(`/create-course/${course.id}/finish`);
+            router.push(`/create-course/${course?.id}/finish`);
         } catch (error) {
             console.error("Error generating chapter content:", error);
         } finally {
@@ -128,7 +128,7 @@ export default function CourseChapters({ course, generateButton }) {
     return (
         <div>
             <h2 className="text-2xl font-bold mb-4">Chapters</h2>
-            {course.chapters.map((chapter, idx) => (
+            {course?.chapters?.map((chapter, idx) => (
                 <Card key={chapter.topic} className="sm:mb-4 mb-3">
                     <div className="p-5 flex items-start">
                         <div className="bg-[#000000] text-white rounded-full flex items-center justify-center h-10 w-10 flex-shrink-0 mr-4">

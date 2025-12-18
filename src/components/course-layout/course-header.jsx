@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import { Card } from "@/components/ui/card";
 import { Button } from "../ui/button";
 import Link from "next/link";
@@ -9,10 +9,13 @@ import { Input } from "@/components/ui/input";
 import { appwrite } from "@/appwrite/uploadFile";
 import { updateCourseLayout } from "@/lib/drizzleActions";
 
-
-export default function CourseHeader({ course, startButton, isThumbnailShown }) {
+export default function CourseHeader({
+  course,
+  startButton,
+  isThumbnailShown,
+}) {
   const [customImage, setCustomImage] = useState(null);
-  console.log("tadsd", course.thumbnail);
+  console.log("tadsd", course?.thumbnail);
 
   const handleImageUpload = async (event) => {
     const file = event.target.files[0];
@@ -26,8 +29,8 @@ export default function CourseHeader({ course, startButton, isThumbnailShown }) 
     console.log("thumbnail", thumbnail);
     // update thumbnail in the database
     await updateCourseLayout(course.id, {
-      thumbnail: thumbnail
-    })
+      thumbnail: thumbnail,
+    });
     console.log("thumbnail updated..");
     if (file) {
       const imageUrl = URL.createObjectURL(file);
@@ -40,7 +43,7 @@ export default function CourseHeader({ course, startButton, isThumbnailShown }) 
       <div className="grid md:grid-cols-2 gap-6">
         <div>
           <h1 className="text-2xl font-bold flex items-center capitalize">
-            {course.topic}
+            {course?.topic}
             <svg
               className="h-5 w-5 ml-2"
               viewBox="0 0 20 20"
@@ -54,9 +57,7 @@ export default function CourseHeader({ course, startButton, isThumbnailShown }) 
               />
             </svg>
           </h1>
-          <p className="mt-2 text-gray-600">
-            {course.topicDescription}
-          </p>
+          <p className="mt-2 text-gray-600">{course?.topicDescription}</p>
           <div className="mt-4 flex items-center">
             <svg
               className="h-5 w-5 mr-1 text-[#000000]"
@@ -70,58 +71,73 @@ export default function CourseHeader({ course, startButton, isThumbnailShown }) 
                 clipRule="evenodd"
               />
             </svg>
-            <span className="text-[#000000] capitalize">{course.category}</span>
+            <span className="text-[#000000] capitalize">
+              {course?.category}
+            </span>
           </div>
-          {startButton === true && <Link href={`/course/${course.id}/start`}><Button className="mt-4 w-full bg-[#000000] hover:bg-[#3a3f43] text-white py-2 px-4 rounded">Start Course</Button></Link>}
+          {startButton === true && (
+            <Link href={`/course/${course?.id}/start`}>
+              <Button className="mt-4 w-full bg-[#000000] hover:bg-[#3a3f43] text-white py-2 px-4 rounded">
+                Start Course
+              </Button>
+            </Link>
+          )}
         </div>
 
         {/* Right Side - Image */}
-        {isThumbnailShown === true && <div className="flex flex-col items-center justify-center">
-          {customImage ? (
-            <Image
-              src={customImage}
-              alt="Course"
-              width={600}
-              height={350}
-              className="w-full max-w-md h-36 md:h-48 rounded-lg object-cover shadow-lg"
-            />
-          ) : (
-            <motion.label
-              htmlFor="course-image"
-              className="w-full max-w-md h-36 md:h-48 flex flex-col items-center justify-center border-2 border-dashed border-gray-300 rounded-lg cursor-pointer transition-all"
-              whileHover={{ scale: 1.02, borderColor: "#0080FF" }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <svg
-                className="h-12 w-12 mb-2 text-gray-400"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-                  d="M3 16l4-4m0 0l4-4m-4 4H17"
-                />
-              </svg>
-              <span className="text-gray-500 mb-2">Click to upload</span>
-              <Input
-                id="course-image"
-                type="file"
-                accept="image/*"
-                onChange={handleImageUpload}
-                className="absolute inset-0 opacity-0 cursor-pointer"
+        {isThumbnailShown === true && (
+          <div className="flex flex-col items-center justify-center">
+            {customImage ? (
+              <Image
+                src={customImage}
+                alt="Course"
+                width={600}
+                height={350}
+                className="w-full max-w-md h-36 md:h-48 rounded-lg object-cover shadow-lg"
               />
-            </motion.label>
-          )}
-        </div>}
+            ) : (
+              <motion.label
+                htmlFor="course-image"
+                className="w-full max-w-md h-36 md:h-48 flex flex-col items-center justify-center border-2 border-dashed border-gray-300 rounded-lg cursor-pointer transition-all"
+                whileHover={{ scale: 1.02, borderColor: "#0080FF" }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <svg
+                  className="h-12 w-12 mb-2 text-gray-400"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M3 16l4-4m0 0l4-4m-4 4H17"
+                  />
+                </svg>
+                <span className="text-gray-500 mb-2">Click to upload</span>
+                <Input
+                  id="course-image"
+                  type="file"
+                  accept="image/*"
+                  onChange={handleImageUpload}
+                  className="absolute inset-0 opacity-0 cursor-pointer"
+                />
+              </motion.label>
+            )}
+          </div>
+        )}
 
-        {isThumbnailShown === false && <Image
-          src={course.thumbnail} 
-          width={600}
-          height={350}
-          alt="thumbnail"
-          className="w-full max-w-md h-36 md:h-48 rounded-lg object-cover shadow-lg"
-        />}
+        {isThumbnailShown === false && course?.thumbnail && (
+          <Image
+            src={course.thumbnail}
+            width={600}
+            height={350}
+            alt="Course thumbnail"
+            className="rounded-xl"
+          />
+        )}
 
         {/* <div className="relative">
           <div className="bg-blue-900 rounded-lg overflow-hidden relative">

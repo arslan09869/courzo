@@ -3,12 +3,13 @@ import { getChapterList } from '@/lib/drizzleActions'
 import React from 'react'
 
 export default async function Page({ params }) {
-  const courseId = params.id;
+  const { id: courseId } = await params;
 
   const res = await getChapterList(courseId);
-  console.log(res);
+  console.log("res", res)
+
   return (
-    <div>  
+    <div>
       <CourseView chapterList={res} />
     </div>
   );
