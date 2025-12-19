@@ -138,15 +138,18 @@ const CourseForm = () => {
     console.log(parsed.chapters);
     // const geminiResponse = await callAi(promptTemplate);
 
+    console.log("Formdata", formData);
+
     const data = { category: formData.category, topic: formData.topic, duration: formData.duration, hasVideo: formData.hasVideo, difficulty: formData.difficulty, noOfChapters: formData.chapters, id: id };
 
+    console.log(data, parsed)
     // console.log(geminiResponse.text);
 
     const res = await saveCourseLayout({ GeminiResponse: parsed, data });
 
     console.log("saved course layout..", res);
 
-    console.log(res.courseId);
+    console.log("courseId",res?.courseId);
     setLoading(false);
     router.push(`/create-course/${res.courseId}`);
 

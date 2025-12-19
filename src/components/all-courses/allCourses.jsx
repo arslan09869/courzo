@@ -45,7 +45,7 @@ const AllCourses = ({ courses }) => {
       </div>
 
       {/* Course List */}
-      {courses.length === 0 ? (
+      {courses?.length === 0 ? (
         <div className="bg-muted/50 rounded-lg p-12 text-center">
           <h4 className="text-xl font-medium mb-4">No courses yet</h4>
           <p className="text-muted-foreground mb-6">
@@ -59,7 +59,7 @@ const AllCourses = ({ courses }) => {
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {courses.map((course) => (
+          {courses?.map((course) => (
             <CourseCard key={course.id} course={course} />
           ))}
         </div>

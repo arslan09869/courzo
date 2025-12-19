@@ -30,16 +30,20 @@
 
 // export default Page
 
-
-import CourseLayout from '@/components/course-layout/course-layout'
-import { getCourseLayout } from '@/lib/drizzleActions'
+import CourseLayout from "@/components/course-layout/course-layout";
+import { getCourseLayout } from "@/lib/drizzleActions";
 
 export default async function Page({ params }) {
-    const course = await getCourseLayout(params.id);
-    console.log("LayoutPageCourse", course);
-    return (
-        <div>
-            <CourseLayout data={course[0]} start={false} generate={true}/>
-        </div>
-    );
+  const course = await getCourseLayout("bc3a195d-f0f1-4553-9367-c2ab314dcb9b");
+  console.log("at", params.id);
+  console.log("LayoutPageCourse", course);
+
+  if (!course || course.length === 0) {
+    return <div>Course layout not found</div>;
+  }
+  return (
+    <div>
+      <CourseLayout data={course[0]} start={false} generate={true} />
+    </div>
+  );
 }

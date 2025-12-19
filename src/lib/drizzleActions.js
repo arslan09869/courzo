@@ -47,7 +47,8 @@ const getCourseLayout = async (id) => {
     console.log("getCourseLayout", response);
     return response;
   } catch (err) {
-    console.error("No courseLayout found", err);
+    console.log("No courseLayout found", err);
+    return [];
   }
 };
 
@@ -137,7 +138,7 @@ const getAllCourses = async (userId) => {
       .where(eq(courseLayout.userId, userId));
     return response;
   } catch (err) {
-    console.error("No courseLayout found", err);
+    console.log("No courseLayout found", err);
   }
 };
 
