@@ -144,6 +144,8 @@ const CourseForm = () => {
 
     const res = await saveCourseLayout({ GeminiResponse: parsed, data });
 
+    console.log("saved course layout..", res);
+
     console.log(res.courseId);
     setLoading(false);
     router.push(`/create-course/${res.courseId}`);

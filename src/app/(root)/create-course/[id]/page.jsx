@@ -36,7 +36,7 @@ import { getCourseLayout } from '@/lib/drizzleActions'
 
 export default async function Page({ params }) {
     const course = await getCourseLayout(params.id);
-    console.log(course);
+    console.log("LayoutPageCourse", course);
     return (
         <div>
             <CourseLayout data={course[0]} start={false} generate={true}/>
