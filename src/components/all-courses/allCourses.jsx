@@ -12,8 +12,8 @@ const AllCourses = ({ courses }) => {
     <div className="max-w-6xl w-full mx-auto px-4 py-8">
       {/* Subheading Section */}
       <div className="text-center mb-10">
-        <h1 className="text-4xl font-extrabold text-primary tracking-tight sm:text-5xl mb-2">
-          Coursora
+        <h1 className="text-3xl font-extrabold text-primary tracking-tight sm:text-4xl mb-2">
+          Courzo
         </h1>
         <p className="text-lg text-muted-foreground max-w-xl mx-auto">
           Your AI-powered platform to create, manage, and publish smart courses effortlessly.
@@ -23,9 +23,9 @@ const AllCourses = ({ courses }) => {
 
       {/* Welcome Message */}
       <header className="mb-4">
-        <h2 className="text-3xl font-bold text-gray-900 mb-2">
-          Hello, <span className="text-primary">{username}</span>
-        </h2>
+        {/* <h2 className="text-3xl font-bold text-gray-900 mb-2">
+          Hello
+        </h2> */}
         <p className="text-xl text-gray-600">
           Manage your AI-generated courses
         </p>

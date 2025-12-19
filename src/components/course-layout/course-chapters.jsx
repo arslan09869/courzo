@@ -190,7 +190,7 @@ export default function CourseChapters({ course, generateButton }) {
             ))}
             {generateButton === true && <div className="sm:mt-8 mt-4 flex justify-center">
                 <Button
-                    className="bg-[#0080FF] hover:bg-[#0080FF]/90 text-white px-6 py-3 rounded-md font-medium flex items-center gap-2"
+                    className="bg-[#000000] hover:bg-gray-800 text-white px-6 py-3 rounded-md font-medium flex items-center gap-2"
                     onClick={generateChapterContent}
                     disabled={loading}
                 >

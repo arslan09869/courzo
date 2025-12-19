@@ -17,7 +17,7 @@ const ChapterContent = ({ chapter }) => {
       {/* Chapter Info */}
       <div className="space-y-4">
         <div className="flex items-center justify-between">
-          <h1 className="text-2xl font-bold text-[#000000]">{chapter.chapterContent.title}</h1>
+          <h1 className="text-xl font-bold text-[#000000]">{chapter.chapterContent.title}</h1>
           <div className="flex items-center gap-1 text-sm text-gray-500">
             <Clock className="h-4 w-4" />
             <span>{chapter.duration}</span>
